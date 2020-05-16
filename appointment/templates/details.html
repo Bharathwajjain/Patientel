@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Patientel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+      body {
+        background: rgb(254,254,254);
+        background: linear-gradient(90deg, rgba(253,253,253,1) 35%, rgba(225,232,240,1) 100%);
+      }
+
+      .logo {
+        margin-top: 2%;
+        margin-left: 5%;
+      }
+
+      .form_container {
+          width: 40%;
+          float: left;
+          top: 50%;
+          transform: translateY(-50%);
+          position: absolute;
+          margin-left: 10%;
+          background-color: white;
+          padding: 5%;
+      }
+      .img_container {
+          /* height: 200px; */
+          max-height: 40%;
+          /* float: right; */
+          /* margin-right: 0px; */
+          max-width: 40%;
+          position:absolute;
+          right: 20%;
+          bottom: 20%; 
+      }
+  </style>
+</head>
+<body>
+​
+    {% load static %}
+    <div class="logo">
+        <h4>Patientel</h4>
+    </div>
+
+    <div class="form_container">
+        Your appointment is confirmed {{form.p_name.value}}!
+        <br>
+        {% ifequal form.disease_type.value "Contagious" %}
+            <h6>For Contagious disease, we provide only online appointments. So, our doctor will contact you soon.</h6>
+        {% else %}
+            <h6>For Non-contagious disease, you can visit the doctors at their clinic/hospital or consult online at the same appointment slot. Your appointments details will be emailed to you shortly.</h6>
+        {% endifequal %}
+    </div>
+
+    <div class="img_container">
+        <img src="{% static '/images/doctor.png' %}" width="400px" alt="Doctor image">
+    </div>
+    ​
+</body>
+</html>
